@@ -5,7 +5,8 @@ export default function RegisterPage(){
         name:"",email:"",password:"",
     });
     const handleRegister = async () => {
-        const res = await fetch ("/api/register",{
+        console.log("form ka data",form);
+        const res = await fetch ("/api/auth/register",{
             method:"post",
             headers:{ "Content-type": "application/json"},
             body:JSON.stringify(form),
@@ -30,8 +31,9 @@ export default function RegisterPage(){
                 />
                 <input type="password"
                 placeholder="password"
-                className="w-full border p-2 mb-3 rounded" />
-                <button onClick={handleRegister}className="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600">Register</button>
+                className="w-full border p-2 mb-3 rounded" 
+                onChange={(e)=> setForm({...form, password: e.target.value})}/>
+                <button type="button" onClick={handleRegister}className="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600">Register</button>
             </div>
         </div>
     );
