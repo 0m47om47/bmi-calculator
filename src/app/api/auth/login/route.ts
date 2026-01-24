@@ -3,6 +3,7 @@ import { NextResponse } from "next/server";
 import User from "@/models/user";
 import bcrypt from "bcryptjs";
 export async function POST(req: Request){
+    try {
     await dbConnect();
     const { email, password } = await req.json();
     if(!email || !password){
@@ -32,5 +33,13 @@ export async function POST(req: Request){
             name: user.email,
         },
     });
+}
+    catch (error) {
+    console.error("LOGIN API ERROR 👉", error);
+    return NextResponse.json(
+      { error: "Internal Server Error" },
+      { status: 500 }
+    );
+  }
     
 }
