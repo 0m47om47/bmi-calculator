@@ -15,6 +15,18 @@ export default function DashboardPage(){
             alert("Fill the both height and weight");
             return;
         }
+        
+        await fetch("/api/auth/bmi",{
+            method:"POST",
+            headers:{"Content-Type": "application/json"
+        },
+        body:JSON.stringify({
+            height,
+            weight,
+            bmi: bmiValue,
+            category
+        }),
+        });
         const result=w/(h*h);
         const bmiValue=Number(result.toFixed(2));
         setBmi(bmiValue);
