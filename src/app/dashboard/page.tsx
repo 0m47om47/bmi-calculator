@@ -122,9 +122,9 @@ export default function DashboardPage() {
                 {/* Calculator Card */}
                 <div className="animate-fadeInUp bg-white/10 backdrop-blur-lg border border-white/20 p-6 rounded-2xl shadow-2xl">
                     <h1 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
-                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        {/* <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
-                        </svg>
+                        </svg> */}
                         BMI Calculator
                     </h1>
 
@@ -133,7 +133,7 @@ export default function DashboardPage() {
                             <label className="text-white/60 text-sm mb-1 block">Height (cm)</label>
                             <input
                                 type="number"
-                                placeholder="e.g. 175"
+                                // placeholder="e.g. 175"
                                 className="w-full bg-white/10 border border-white/20 text-white placeholder-white/30 p-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-400/50 transition"
                                 value={height}
                                 onChange={(e) => setHeight(e.target.value)}
@@ -143,7 +143,7 @@ export default function DashboardPage() {
                             <label className="text-white/60 text-sm mb-1 block">Weight (kg)</label>
                             <input
                                 type="number"
-                                placeholder="e.g. 70"
+                                // placeholder="e.g. 70"
                                 className="w-full bg-white/10 border border-white/20 text-white placeholder-white/30 p-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-400/50 transition"
                                 value={weight}
                                 onChange={(e) => setWeight(e.target.value)}
