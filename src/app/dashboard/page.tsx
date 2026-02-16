@@ -8,7 +8,7 @@ export default function DashboardPage(){
     const[weight,setWeight] = useState("");
     const [bmi, setBmi] = useState<number | null>(null);
     const[category,setCatogry]=useState("");
-    const calculateBMI =()=>{
+    const calculateBMI = async () => {
         const h=Number(height)/100;
         const w=Number(weight);
         if(!h || !w){
@@ -16,32 +16,35 @@ export default function DashboardPage(){
             return;
         } 
         
-        await fetch("/api/auth/bmi",{
-            method:"POST",
-            headers:{"Content-Type": "application/json"
-        },
-        body:JSON.stringify({
-            height,
-            weight,
-            bmi: bmiValue,
-            category
-        }),
-        });
         const result=w/(h*h);
         const bmiValue=Number(result.toFixed(2));
         setBmi(bmiValue);
+
+        let cat = "";
         if(bmiValue <18.5){
-            setCatogry("Underweight");
+            cat = "Underweight";
         }
         else if(bmiValue<25){
-            setCatogry("Normal");
+            cat = "Normal";
         }
         else if(bmiValue<30){
-            setCatogry("Overweight");
+            cat = "Overweight";
         }
         else{
-            setCatogry("Obese");
+            cat = "Obese";
         }
+        setCatogry(cat);
+
+        await fetch("/api/auth/bmi",{
+            method:"POST",
+            headers:{"Content-Type": "application/json"},
+            body:JSON.stringify({
+                height,
+                weight,
+                bmi: bmiValue,
+                category: cat
+            }),
+        });
     };
     return(
         <div className="flex items-center justify-center h-screen bg-gray-100">
