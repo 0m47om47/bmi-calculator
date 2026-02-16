@@ -14,7 +14,7 @@ export default function DashboardPage(){
         if(!h || !w){
             alert("Fill the both height and weight");
             return;
-        }
+        } 
         
         await fetch("/api/auth/bmi",{
             method:"POST",
